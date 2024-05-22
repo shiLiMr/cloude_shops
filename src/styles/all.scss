@@ -10,3 +10,13 @@
 .el-container{
     height: 100vh;
 }
+
+.index-main{
+    border: 1px solid #eee;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}

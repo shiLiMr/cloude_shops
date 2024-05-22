@@ -1,5 +1,5 @@
 <template>
-<el-main style="background-color: pink;">
+<el-main >
 
     <router-view v-slot="{Component}">
         <Transition name="fac" mode="out-in">
@@ -14,6 +14,9 @@
 
 </script>
 <style lang='scss' scoped>
+.el-main{
+    padding: 15px !important;
+}
 .fac-enter-active,
 .fac-leave-active {
   transition: all 0.5s ease;
