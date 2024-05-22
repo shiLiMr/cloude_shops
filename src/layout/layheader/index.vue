@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-header style="background-color: bisque;">
+        <el-header >
             <div class="header-left">
                 <svg-icon class="svgicons" @click="store.isCollapse = !store.isCollapse" size="20px"
                     :icon="store.isCollapse ? 'Expand' : 'Fold'"></svg-icon>
@@ -70,7 +70,7 @@ watchEffect(()=>{
 // onBeforeRouteUpdate((to, from) => { // 路由切换触发函数
 //     console.log(to);
 // })
-const once = (name:string) => {// 点击
+const once = (name:string) => {// 点击 跳转页面
     console.log(name);
     router.push({path:name})
 }
@@ -96,6 +96,9 @@ const Tui = () => { // 退出登录
     :deep(.el-tabs__item.is-active){
         background-color: #409eff;
         color: #fff;
+    }
+    :deep(.el-tabs__item){
+        padding: 0 15px !important;
     }
 }
 
