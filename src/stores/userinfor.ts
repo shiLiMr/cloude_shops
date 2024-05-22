@@ -5,6 +5,8 @@ import {getUserInfoApi} from '@/api/login/login'
 
 
 export const useUserInforStore = defineStore('userinfor',()=> {
+    const isCollapse = ref(false)
+
     const userinfor = ref({
        
     })
@@ -12,11 +14,11 @@ export const useUserInforStore = defineStore('userinfor',()=> {
 
     const getUserInfo = async () => {
         const res = await getUserInfoApi()
-        console.log(res);
+        // console.log(res);
         
-        userinfor.value = res.data
+        userinfor.value = res.data.role
     }
     return {
-        userinfor,getUserInfo,username,
+        userinfor,getUserInfo,username,isCollapse
     }
 }, { persist: true })

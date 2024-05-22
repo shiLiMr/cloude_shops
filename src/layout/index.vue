@@ -1,29 +1,28 @@
 <template>
  <div class="common-layout">
     <el-container>
-      <el-aside width="200px" style="background-color: aquamarine;">Aside</el-aside>
-      <el-container>
-        <el-header style="background-color: bisque;">Header</el-header>
-        <el-main style="background-color: pink;">Main</el-main>
+      <!-- aside -->
+      <layaside></layaside>
+      <el-container direction="vertical">
+        <!-- header -->
+        <layoutheader></layoutheader>
+        <!-- main -->
+        <layoutmain>
+          
+        </layoutmain>
       </el-container>
     </el-container>
   </div>
 </template>
 <script setup lang='ts'>
-import {getMenuListApi} from '@/api/login/login'
-import type {MenuListDatum} from "@/api/login/types"
-import { ref } from 'vue';
 import { useUserInforStore } from '@/stores/userinfor'
 const store = useUserInforStore()
 store.getUserInfo()
+import { defineAsyncComponent } from 'vue';
+const layaside = defineAsyncComponent(() => import('../layout/layaside/index.vue'))
+const layoutheader = defineAsyncComponent(() => import('../layout/layheader/index.vue'))
+const layoutmain = defineAsyncComponent(() => import('../layout/laymain/index.vue'))
 
-const menuListdata=ref<MenuListDatum>()
-const getmenus=async()=>{
-   const res= await getMenuListApi()
-   console.log(res);
-   menuListdata.value=res.data
-}
-getmenus()
 
 </script>
 <style lang='scss' scoped>
