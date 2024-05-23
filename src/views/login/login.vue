@@ -27,8 +27,8 @@ const router = useRouter();
 
 const ruleFormRef = ref<FormInstance>()
 const ruleForm = ref({
-    username: '',
-    password: '',
+    username: 'admin',
+    password: 'abc12345',
 })
 const rules = ref<FormRules>({
     username: [
