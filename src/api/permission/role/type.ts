@@ -21,3 +21,28 @@ export  interface createRoleI {
     rolename: string,
     remark: string,
 }
+// 权限列表 类型
+export interface PerDatumType {
+    children: ChildType[];
+    component: string;
+    createdAt: string;
+    icon: string;
+    id: number;
+    isParent: boolean;
+    link: string;
+    menuname: string;
+    parentid: number;
+    updatedAt: string;
+}
+
+export interface ChildType {
+    component: string;
+    createdAt: string;
+    icon: string;
+    id: number;
+    isParent: boolean;
+    link: string;
+    menuname: string;
+    parentid: number;
+    updatedAt: string;
+}

@@ -20,13 +20,15 @@
                 </template>
                 <!-- 操作 -->
                 <template #option="{ scope }">
-                    <el-button type="primary" link>授权</el-button>
+                    <el-button type="primary" link @click="editRole(scope.row.id)">授权</el-button>
                     <el-button type="danger" link @click="delRole(scope.row.id)">删除</el-button>
                 </template>
             </tablelists>
         </el-card>
         <!-- 抽屉 -->
         <roledialog ref="Roledialogs" @getRoleList="SearchFormListData()"></roledialog>
+        <!-- 权限设置 -->
+        <persitionsole ref="persitionsolesdia">  </persitionsole>
     </div>
 </template>
 <script setup lang='ts'>
@@ -35,9 +37,12 @@ import { getRoleListApi, deleteRoleApi } from '@/api/permission/role/role'
 import type { RoleListType, getRoleListI } from '@/api/permission/role/type'
 import { defineAsyncComponent } from 'vue';
 import { ElMessage, ElMessageBox } from 'element-plus';
+// table表格
 const tablelists = defineAsyncComponent(() => import('@/components/TableLists.vue'))
-
+// 抽屉
 const roledialog = defineAsyncComponent(() => import('./components/roledialog.vue'))
+//弹出框
+const persitionsole =defineAsyncComponent(()=>import('./components/persitionsrole.vue'))
 
 const SearchForm = ref<getRoleListI>({ // 请求列表参数
     rolename: '',
@@ -87,7 +92,7 @@ const Roledialogs = ref<InstanceType<typeof roledialog>>()
 const addRole = () => { // 打开抽屉
     Roledialogs.value?.openDialog()
 }
-const delRole = (id: number) => {
+const delRole = (id: number) => { // 删除角色
     ElMessageBox.confirm(
         '确定要删除吗?',
         '提示',
@@ -112,8 +117,11 @@ const delRole = (id: number) => {
                 message: '取消删除',
             })
         })
+}
 
-
+const persitionsolesdia=ref<InstanceType<typeof persitionsole>>()
+const editRole = (id: number) => { // 编辑角色
+    persitionsolesdia.value?.opendia(id)
 }
 
 
